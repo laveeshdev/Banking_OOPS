@@ -18,7 +18,7 @@ public:
     }
 
     void displayTransaction() const {
-        cout << "Type: " << type << ", Amount: $" << amount << ", Date: " << ctime(&timestamp);
+        cout << "Type: " << type << ", Amount: ₹" << amount << ", Date: " << ctime(&timestamp);
     }
 };
 
@@ -38,7 +38,7 @@ public:
         if (amount > 0) {
             balance += amount;
             transactions.push_back(Transaction("Deposit", amount));
-            cout << "Deposited: $" << amount << endl;
+            cout << "Deposited: ₹" << amount << endl;
         } else {
             cout << "Deposit amount must be positive." << endl;
         }
@@ -48,7 +48,7 @@ public:
         if (amount > 0 && amount <= balance) {
             balance -= amount;
             transactions.push_back(Transaction("Withdraw", amount));
-            cout << "Withdrawn: $" << amount << endl;
+            cout << "Withdrawn: ₹" << amount << endl;
         } else {
             cout << "Invalid withdrawal amount." << endl;
         }
@@ -76,7 +76,7 @@ public:
     }
 
     virtual void displayAccountInfo() const {
-        cout << "Account Number: " << accountNumber << ", Balance: $" << balance << endl;
+        cout << "Account Number: " << accountNumber << ", Balance: ₹" << balance << endl;
     }
 
     void displayStatement() const {
@@ -103,7 +103,7 @@ public:
         double interest = balance * interestRate / 12;
         balance += interest;
         transactions.push_back(Transaction("Interest", interest));
-        cout << "Monthly interest applied: $" << interest << endl;
+        cout << "Monthly interest applied: ₹" << interest << endl;
     }
 
     void displayAccountInfo() const override {
@@ -126,7 +126,7 @@ public:
         if (amount > 0 && amount <= balance + overdraftLimit) {
             balance -= amount;
             transactions.push_back(Transaction("Withdraw", amount));
-            cout << "Withdrawn: $" << amount << endl;
+            cout << "Withdrawn: ₹" << amount << endl;
         } else {
             cout << "Withdrawal exceeds overdraft limit." << endl;
         }
@@ -135,7 +135,7 @@ public:
     void displayAccountInfo() const override {
         cout << "Checking Account - ";
         BankAccount::displayAccountInfo();
-        cout << "Overdraft Limit: $" << overdraftLimit << endl;
+        cout << "Overdraft Limit: ₹" << overdraftLimit << endl;
     }
 };
 
@@ -167,7 +167,7 @@ public:
         if (fromAccount && toAccount && amount > 0) {
             fromAccount->withdraw(amount);
             toAccount->deposit(amount);
-            cout << "Transferred $" << amount << " from " << fromAccNum << " to " << toAccNum << endl;
+            cout << "Transferred ₹" << amount << " from " << fromAccNum << " to " << toAccNum << endl;
         } else {
             cout << "Transfer failed. Check account numbers, password, and balance." << endl;
         }
